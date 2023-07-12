@@ -23,4 +23,8 @@
   </div>
 <% end %>
 
-<%= render "public/shared/links" %>
+<p>会員登録がお済みでない方</p>
+<tr><%= link_to "こちら", new_customer_registration_path %></tr>
+<tr>から新規登録を行ってください</tr>
+
+<%#= render "public/shared/links" %>

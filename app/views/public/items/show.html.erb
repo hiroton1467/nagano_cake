@@ -1,18 +1,24 @@
+<%=form_with model: CartItem.new, url:cart_items_path, method: :post do |f| %>
 <table>
  </tbody>
-
  <tr>
   <td><%= link_to @item.name, items_path(@item.id) %></td>
 
   <td><%= @item.introduction %></td>
 
   <td><%= @item.price %></td>
+
+   <%= f.hidden_field :item_id, :value => @item.id %>
+
  </tr>
- 
  <p>数量を選択してください</p>
  <p><%= f.select :amount, *[1..99] %></p>
 
-<p><%= link_to "カートに入れる",  cart_items_path(@item.id) %></p>
+ <%= f.submit 'カートに入れる' %>
+
+<p><%#= link_to "カートに入れる",  cart_items_path(@item.id) %></p>
 
  </tbody>
 </table>
+
+ <% end %>

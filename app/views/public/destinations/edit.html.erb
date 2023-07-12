@@ -1,0 +1,14 @@
+<%= form_with model: @destination, url:destination_path(@destination.id), method: :patch do |f| %>
+
+<p>郵便番号</p>
+ <%= f.text_field :postal_code %>
+
+ <p>住所</p>
+ <%= f.text_field :address %>
+
+ <P>宛名</p>
+ <%= f.text_field :name %>
+
+ <%= f.submit '変更内容を保存' %>
+
+ <% end %>

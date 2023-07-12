@@ -1,11 +1,41 @@
 
+<td><%= link_to "空にする", cart_items_destroy_all_path, method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+
 <% @cart_items.each do |cart_item| %>
 
-<tr>
- <td><%= link_to item.name, item_path(item.id) %></td>
 
- <td><%= item.price %></td>
- 
- 
+<tr>
+ <td><%= cart_item.item.name %></td>
+
+ <td><%= cart_item.item.price %></td>
+
+ <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :patch do |f| %>
+ <td>数量を選択してください</td>
+ <td><%= f.select :amount, *[1..99] %></td>
+ <td><%= f.submit '変更' %></td>
+</tr>
+
+<% end %>
+
+<table>
+  <thead>
+      <th>単価(税込)</th>
+      <th>小計</th>
+  </thead>
+  <tbody>
+      <tr>
+          <td><%= cart_item.item.with_tax_price %></td>
+          <td><%= cart_item.subtotal %></td>
+          <% @total +=  cart_item.subtotal %>
+      </tr>
+     <td><%= link_to "Destroy", cart_item_path(cart_item.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+  <% end %>
+  </tbody>
+</table>
+
+<%# end %>
+<%= form_with url: new_order_path, method: :get do |f| %>
+<%= f.hidden_field :total, :value => @total %>
+ <%= f.submit '情報入力へ進む' %>
 <% end %>
 

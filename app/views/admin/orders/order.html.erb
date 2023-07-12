@@ -1,0 +1,32 @@
+<p>支払い方法</p>
+<%= f.radio_botton :payment_method, "credit_card" %>
+<%= f.label :payment_method_credit_cart, "クレージットカード" %>
+
+<%= f.radio_button :payment_method, "transfer" %>
+<%= f.label :payment_method_transfer, "銀行振込" %>
+
+<p>お届け先</p>
+<%= f.radio_button :payment_method, "address" %>
+<%= f.label :payment_method_address, "ご自身の住所" %>
+
+<%= f.radio_button :payment_method, "select_address" %>
+<%= f.label :payment_method_select_address, "登録住所から選択" %>
+<%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :name) %>
+
+<%= f.radio_button :payment_method, "new_address" %>
+<%= f.label :payment_method_new_address, "新しいお届け" %>
+
+<div class="field">
+  <%= f.label :postal_code %><br>
+  <%= f.text_field :postal_code %>
+  </div>
+
+  <div class="field">
+  <%= f.label :address %><br>
+  <%= f.text_field :address %>
+  </div>
+
+  <div class="field">
+  <%= f.label :name %><br>
+  <%= f.text_field :name %>
+  </div>

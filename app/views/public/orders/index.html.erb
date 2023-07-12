@@ -1,0 +1,24 @@
+<h1>注文履歴一覧</h1>
+
+<table>
+ <tbody>
+ <tr>
+  <td>注文日</td>
+  <td>配送先</td>
+  <td>注文商品</td>
+  <td>支払金額</td>
+ </tr>
+
+
+<% @orders.each do |order| %>
+<tr>
+ <td><%= order.address %></td>
+ <td><%= order.name %></td>
+ <% order.order_items.each do |order_item| %>
+  <td><%= order_item.item.name %></td>
+ <% end %>
+ <td><%= order.billing %></td>
+</tr>
+<% end %>
+  </tbody>
+ </table>

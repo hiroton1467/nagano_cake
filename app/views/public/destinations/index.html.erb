@@ -1,0 +1,34 @@
+<%= form_with model: Destination.new, method: :post do |f| %>
+
+ <p>郵便番号</p>
+ <%= f.text_field :postal_code %>
+
+ <p>住所</p>
+ <%= f.text_field :address %>
+
+ <P>宛名</p>
+ <%= f.text_field :name %>
+
+ <%= f.submit '新規登録' %>
+
+ <% end %>
+
+ <thead>
+ <tr>
+  <th>郵便番号</th>
+  <th>住所</th>
+  <th>宛名</th>
+ </tr>
+ </thead>
+<tbody>
+
+<% @destinations.each do |destination| %>
+
+<td><%= destination.postal_code %></td>
+<td><%= destination.address %></td>
+<td><%= destination.name %></td>
+
+<td><%= link_to "Edit",  edit_destination_path(destination.id) %></td>
+<td><%= link_to "Destroy", destination_path(destination.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+
+<% end %>

@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 2023_06_07_045833) do
   end
 
   create_table "cart_items", force: :cascade do |t|
+    t.integer "item_id", null: false
+    t.integer "customer_id", null: false
     t.integer "amount", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -36,7 +38,10 @@ ActiveRecord::Schema.define(version: 2023_06_07_045833) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "name", null: false
+    t.string "last_name", null: false
+    t.string "first_name", null: false
+    t.string "last_name_kana", null: false
+    t.string "first_name_kana", null: false
     t.string "postal_code", null: false
     t.string "address", null: false
     t.string "telephone_number", null: false
@@ -47,7 +52,8 @@ ActiveRecord::Schema.define(version: 2023_06_07_045833) do
   end
 
   create_table "destinations", force: :cascade do |t|
-    t.string "postcode", null: false
+    t.integer "customer_id", null: false
+    t.string "postal_code", null: false
     t.string "address", null: false
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -56,28 +62,29 @@ ActiveRecord::Schema.define(version: 2023_06_07_045833) do
 
   create_table "items", force: :cascade do |t|
     t.string "name", null: false
-    t.text "introduction", null: false
+    t.string "introduction", null: false
     t.integer "price", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.integer "order_production", null: false
-    t.integer "price", null: false
-    t.integer "quantity", null: false
+    t.integer "item_id"
+    t.integer "order_id"
+    t.integer "price"
+    t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "orders", force: :cascade do |t|
+    t.integer "customer_id", null: false
     t.string "name", null: false
     t.string "address", null: false
     t.string "postcode", null: false
     t.integer "billing", null: false
     t.integer "postage", null: false
-    t.integer "payment", null: false
-    t.integer "order_received", null: false
+    t.integer "payment_method", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

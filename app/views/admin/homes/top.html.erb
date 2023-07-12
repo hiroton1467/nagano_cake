@@ -1,0 +1,18 @@
+<table>
+ <tbody>
+ <tr>
+  <td>購入日時</td>
+  <td>購入者</td>
+  <td>注文個数</td>
+ </tr>
+
+
+<% @orders.each do |order| %>
+<tr>
+ <td><%= order.id %></td>
+ <td><%= order.customer.name %></td>
+ <td><%= order.order_items.sum(:quantity) %></td>
+</tr>
+  <% end %>
+  </tbody>
+ </table>
