@@ -12,6 +12,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
+    #@cart_items = current_customer.cart_items.all
   end
 
   def complete
@@ -46,8 +48,9 @@ class Public::OrdersController < ApplicationController
       @order.name = current_customer.name
       @order.address = current_customer.address
     elsif params[:order][:address_number] == "2"
-      @order.name = Destination.find(params[:order][:registered]).name
-      @order.address = Destination.find(params[:order][:registered]).address
+      @order.name = Destination.find(params[:order][:destination_id]).name
+      @order.address = Destination.find(params[:order][:destination_id]).address
+      @order.postcode = Destination.find(params[:order][:destination_id]).postal_code
     elsif params[:order][:address_number] == "3"
       @order.postcode = params[:order][:address_postcode]
       @order.address = params[:order][:address]

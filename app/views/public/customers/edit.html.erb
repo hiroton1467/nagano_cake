@@ -9,12 +9,12 @@
   <%= f.label :名前（名） %><br>
   <%= f.text_field :first_name %>
   </div>
-  
+
   <div class="field">
   <%= f.label :フリガナ（セイ） %><br>
   <%= f.text_field :last_name_kana %>
   </div>
-  
+
   <div class="field">
   <%= f.label :フリガナ（メイ） %><br>
   <%= f.text_field :first_name_kana %>
@@ -40,7 +40,8 @@
   <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <p><%= f.submit '変更を確定する' %></p>
-  
+  <p><%= f.submit '編集内容を保存する' %></p>
+  <%= link_to "退会する", leave_path(@customer.id) %>
+
 
   <% end %>

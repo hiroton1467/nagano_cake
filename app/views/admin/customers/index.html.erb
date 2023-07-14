@@ -1,6 +1,16 @@
+<table>
+  <tbody>
+<tr>
+<td>会員ID</td>
+<td>氏名</td>
+<td>メールアドレス</td>
+</tr>
 <% @customers.each do |customer| %>
-<p><%= customer.id %></p>
-<p><%= link_to customer.name, admin_customer_path(customer.id) %></p>
-<p><%= customer.email%></p>
-
+<tr>
+<td><%= customer.id %></td>
+<td><%= link_to customer.name, admin_customer_path(customer.id) %></td>
+<td><%= customer.email%></td>
+</tr>
 <% end %>
+   </tbody>
+</table>

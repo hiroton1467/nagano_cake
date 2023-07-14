@@ -1,21 +1,46 @@
+<h2><%= @customer.name + "さんの会員情報" %></h2>
 
-<h4>会員ID</h4>
-<p><%= @customer.id %></p>
 
-<h4>氏名</h4>
-<p><%= @customer.name %></p>
+<table>
+  </tbody>
+  
+<tr>
+<td>会員ID</td>
+<td><%= @customer.id %></td>
+</tr>
 
-<h4>郵便番号</h4>
-<p><%= @customer.postal_code %></p>
+<tr>
+<td>氏名</td>
+<td><%= @customer.name %></td>
+</tr>
 
-<h4>住所</h4>
-<p><%= @customer.address %></p>
+<tr>
+<td>フリガナ</td>
+<td><%= @customer.kana %></td>
+</tr>
 
-<h4>電話番号</h4>
-<p><%= @customer.telephone_number %></p>
+<tr>
+<td>郵便番号</td>
+<td><%= @customer.postal_code %></td>
+</tr>
 
-<h4>メールアドレス</h4>
-<p><%= @customer.email %></p>
+<tr>
+<td>住所</td>
+<td><%= @customer.address %></td>
+</tr>
+
+<tr>
+<td>電話番号</td>
+<td><%= @customer.telephone_number %></td>
+</tr>
+
+<tr>
+<td>メールアドレス</td>
+<td><%= @customer.email %></td>
+</tr>
+
+   </tbody>
+</table>
 
 <p><%= link_to "編集をする", edit_admin_customer_path(@customer.id) %></p>
 <p><%= link_to "注文履歴一覧", edit_admin_customer_path(@customer.id) %></p>

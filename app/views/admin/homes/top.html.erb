@@ -9,7 +9,7 @@
 
 <% @orders.each do |order| %>
 <tr>
- <td><%= order.id %></td>
+ <td><%= link_to order.created_at, admin_order_path(order.id) %></td>
  <td><%= order.customer.name %></td>
  <td><%= order.order_items.sum(:quantity) %></td>
 </tr>

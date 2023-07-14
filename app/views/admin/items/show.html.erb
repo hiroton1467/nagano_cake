@@ -2,8 +2,8 @@
  </tbody>
 
  <tr>
-  <td><%= link_to @item.name, admin_item_path(@item.id) %>
- </td>
+  <%= image_tag @item.get_profile_image(100,100) %>
+  <td><%= link_to @item.name, admin_item_path(@item.id) %></td>
 
   <td><%= @item.introduction %></td>
   <td><%= @item.price %></td>
