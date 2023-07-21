@@ -2,11 +2,12 @@
 <table>
  </tbody>
  <tr>
+  <%= image_tag @item.get_image(200,200) %>
   <td><%= link_to @item.name, items_path(@item.id) %></td>
 
   <td><%= @item.introduction %></td>
-
-  <td><%= @item.price %></td>
+  
+  <td><%= @item.with_tax_price %> (税込)</td>
 
    <%= f.hidden_field :item_id, :value => @item.id %>
 

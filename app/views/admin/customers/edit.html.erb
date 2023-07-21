@@ -6,11 +6,10 @@
     <% end %>
   </ul>
   <% end %>
-  
-<table>
-  <tbody>
-
 <%= form_with model: @customer, url:admin_customer_path(@customer.id), method: :patch do |f| %>
+<table>
+
+
 <tr>
 <td>会員ID</td>
 <td><%= @customer.id %></td>
@@ -28,9 +27,9 @@
 <td><%= f.text_field :first_name_kana %></td>
 </tr>
 
-<tr> 
+<tr>
 <td>郵便番号</td>
-<td><%= f.text_field :postal_code %><td>
+<td><%= f.text_field :postal_code %></td>
 </tr>
 
 <tr>
@@ -40,14 +39,29 @@
 
 <tr>
 <td>電話番号</td>
-<td><%= f.text_field :telephone_number %><td>
+<td><%= f.text_field :telephone_number %></td>
 </tr>
 
 <tr>
 <td>メールアドレス</td>
 <td><%= f.text_field :email %></td>
 </tr>
-  
-<%= f.submit '変更を保存' %>
 
+<tr>
+<td>会員ステータス</td>
+<td>
+<%= f.radio_button :is_deleted, false %>
+<%= f.label :is_deleted, "有効" %>
+
+<%= f.radio_button :is_deleted, true %>
+<%= f.label :is_deleted, "退会" %>
+</td>
+</tr>
+
+<tr>
+<td><%= f.submit '変更を保存' %></td>
+</tr>
+
+
+</table>
 <% end %>

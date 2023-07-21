@@ -1,5 +1,5 @@
 
-<td><%= link_to "空にする", cart_items_destroy_all_path, method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+<p><%= link_to "空にする", cart_items_destroy_all_path, method: :delete, "data-confirm" => "本当に削除しますか？" %></p>
 
 <% @cart_items.each do |cart_item| %>
 
@@ -33,9 +33,16 @@
   </tbody>
 </table>
 
-<%# end %>
-<%= form_with url: new_order_path, method: :get do |f| %>
-<%= f.hidden_field :total, :value => @total %>
+<p>合計金額　<%=  @total %><p>
+
+<% if @cart_items.present? %>
+ <%= form_with url: new_order_path, method: :get do |f| %>
+ <%= f.hidden_field :total, :value => @total %>
  <%= f.submit '情報入力へ進む' %>
 <% end %>
+
+<% end %>
+
+
+<%= link_to "買い物を続ける", root_path %>
 

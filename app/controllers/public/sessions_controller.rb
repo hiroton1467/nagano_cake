@@ -6,8 +6,10 @@ class Public::SessionsController < Devise::SessionsController
   before_action :customer_state, only: [:create]
 
   def after_sign_in_path_for(resource)
-    items_path(current_customer.id)
+    root_path(current_customer.id)
   end
+
+
 
   def after_sign_out_path_for(resource)
     new_customer_session_path # ログアウト後に遷移するpathを設定
@@ -21,8 +23,8 @@ def customer_state
   # アカウントを取得できなかった場合、このメソッドを終了する
   return if !@customer
   # 【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
-  if @customer.valid_password?(params[:customer][:password]) && (params[:customer][:email])
-     new_customer_registration_path
+  if @customer.valid_password?(params[:customer][:password]) && @customer.is_deleted
+     redirect_to new_customer_registration_path
   end
 end
 

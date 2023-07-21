@@ -12,23 +12,29 @@
  <%= f.submit '新規登録' %>
 
  <% end %>
-
- <thead>
+<table>
+ <tbody>
  <tr>
-  <th>郵便番号</th>
-  <th>住所</th>
-  <th>宛名</th>
+  <td>郵便番号</td>
+  <td>住所</td>
+  <td>宛名</td>
  </tr>
- </thead>
-<tbody>
+ </tbody>
+</table>
 
+
+
+<table>
+ <tbody>
 <% @destinations.each do |destination| %>
+<tr>
+ <td><%= destination.postal_code %></td>
+ <td><%= destination.address %></td>
+ <td><%= destination.name %></td>
 
-<td><%= destination.postal_code %></td>
-<td><%= destination.address %></td>
-<td><%= destination.name %></td>
-
-<td><%= link_to "Edit",  edit_destination_path(destination.id) %></td>
-<td><%= link_to "Destroy", destination_path(destination.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
-
+ <td><%= link_to "Edit",  edit_destination_path(destination.id) %></td>
+ <td><%= link_to "Destroy", destination_path(destination.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+</tr>
 <% end %>
+ </tbody>
+</table>

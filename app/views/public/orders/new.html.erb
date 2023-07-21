@@ -18,7 +18,7 @@
 <%= f.radio_button :address_number, 2 %>
 <%= f.label :address_number_2, "登録先の住所" %>
 <%#= f.select :destination_id, options_from_collection_for_select(Destination.all, :id, :name) %>
-<%= f.select :destination_id, options_from_collection_for_select(Destination.all, :id, :destination_display) %>
+<%= f.select :destination_id, options_from_collection_for_select(@address, :id, :destination_display) %>
 
  <%= f.radio_button :address_number, 3 %>
  <%= f.label :address_number_3, "新しいお届け先" %>
